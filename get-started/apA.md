@@ -1,15 +1,17 @@
 # You Don't Know JS Yet: Get Started - 2nd Edition
-# Appendix A: Exploring Further
 
-In this appendix, we're going to explore some topics from the main chapter text in a bit more detail. Think of this content as an optional preview of some of the more nuanced details covered throughout the rest of the book series.
+# ضمیمه A: بررسی عمیق‌تر
 
-## Values vs. References
+دراین ضمیمه، میخواهیم چند عنوان از متن اصلی را اکتشاف کنیم. به محتویات این کتاب به عنوان چشم‌انداز اختیاری از جزییات ظریفی که میخواهیم در باقی این کتاب‌ها بررسی کنیم فکر کنید.
 
-In Chapter 2, we introduced the two main types of values: primitives and objects. But we didn't discuss yet one key difference between the two: how these values are assigned and passed around.
+## مقادیر در مقابل رفرنس‌ها
 
-In many languages, the developer can choose between assigning/passing a value as the value itself, or as a reference to the value. In JS, however, this decision is entirely determined by the kind of value. That surprises a lot of developers from other languages when they start using JS.
+در فصل ۲، دو مدل از أنواع اصلی مقدارها را بررسی کردیم: پریمی‌تیو و آبجکت‌ها.
+ولی نکته‌ای در مورد این رو را تا کنون بررسی نکرده ایم: نحوه تخصیص و انتقال این مقدارها بین متغییر‌ها چگونه است.
 
-If you assign/pass a value itself, the value is copied. For example:
+در بسیاری از زبان‌ها، برنامه نویسان در تخصیص/انتقال یک متغییر به عنوان مقدار یا به عنوان رفرنس حق انتخاب دارند. گرچه در JS ، این تصمیم کاملا به نوع متغییر بستگی دارد. و این، برنامه‌نویسان سایر زبان‌های برنامه نویسی را هنگام شروع به کار با JS شگفت‌زده می‌کند.
+
+اگر مقدار را تخصیص/انتقال دهید مقدار کپی هست. برای مثال:
 
 ```js
 var myName = "Kyle";
@@ -17,9 +19,9 @@ var myName = "Kyle";
 var yourName = myName;
 ```
 
-Here, the `yourName` variable has a separate copy of the `"Kyle"` string from the value that's stored in `myName`. That's because the value is a primitive, and primitive values are always assigned/passed as **value copies**.
+در اینجا متغیر `yourName` یک کپی جدا از متن `"Kyle"` که درون `myName` ذخیره شده است می‌باشد. زیرا این مقدار یک primitive است و مقدارهای primitive همیشه به صورت **کپی** تخصیص/انتقال داده می‌شوند.
 
-Here's how you can prove there's two separate values involved:
+در اینجا میتوان ثابت کرد که دو مقدار جدا نقش دارند.
 
 ```js
 var myName = "Kyle";
@@ -35,17 +37,17 @@ console.log(yourName);
 // Kyle
 ```
 
-See how `yourName` wasn't affected by the re-assignment of `myName` to `"Frank"`? That's because each variable holds its own copy of the value.
+ببیند که چگونه `yourName` با تغییر مقدار `myName` به `"Frank"` تغییر نکرد. چرا که هر متغیر کپی خودش را از مقدار دارد.
 
-By contrast, references are the idea that two or more variables are pointing at the same value, such that modifying this shared value would be reflected by access via any of those references. In JS, only object values (arrays, objects, functions, etc.) are treated as references.
+در مقابل، رفرنس‌ها به این معنی ‌هستند که دو متغییر در حال اشاره به یک مقدار می‌باشند. اینگار که تاثیر تغییر این مقدار مشترک منوت بر دسترسی آن متغییر ها است. در JS تنها با مقدار شمایل object (آرایه‌ها، objectها، توابع و غیره.) به عنوان رفرنس برخورد می‌شود.
 
-Consider:
+کد زیر را در نظر بگیرید:
 
 ```js
 var myAddress = {
     street: "123 JS Blvd",
     city: "Austin",
-    state: "TX"
+    state: "TX",
 };
 
 var yourAddress = myAddress;
@@ -57,35 +59,35 @@ console.log(yourAddress.street);
 // 456 TS Ave
 ```
 
-Because the value assigned to `myAddress` is an object, it's held/assigned by reference, and thus the assignment to the `yourAddress` variable is a copy of the reference, not the object value itself. That's why the updated value assigned to the `myAddress.street` is reflected when we access `yourAddress.street`. `myAddress` and `yourAddress` have copies of the reference to the single shared object, so an update to one is an update to both.
+از آنجایی که مقدار تخصیص داده شده به `myAddress` یک آبجکت است در واقع رفرنس آن نگهداری/تخصیص داده شده است، بدین ترتیب مقدار تخصیص داده شده به متغیر`yourAddress` یک کپی از رفنرس آن آنجکت است نه مقدار آن. به همین دلیل است که مقدار تخصیص داده شده به ` yourAddress.street` هنگامی که ` myAddress.street` دستخوش تغییر می‌شود، تغییر میکند. به عبارتی `myAddress` و `yourAddress` کپی‌های یک رفنرنس از آبجکت مشترک دارند، در نتیجه آپدیت یکی منجر به آپدیت هردوی آنها می‌شود.
 
-Again, JS chooses the value-copy vs. reference-copy behavior based on the value type. Primitives are held by value, objects are held by reference. There's no way to override this in JS, in either direction.
+دوباره، JS تصمیم می‌گیرد که بسته به نوع مقدار از مقدار کپی بگیرد یا از رفرنس. پریی‌میتیو‌ها با مقدار نگه‌داری می‌شوند ولی آبجکت‌ها با رفرنس. هیچ راهی وجود ندارد تا در JS این قاعده را تغییر داد.
 
-## So Many Function Forms
+## فرم‌های بسیار مختلف یک تابع
 
-Recall this snippet from the "Functions" section in Chapter 2:
+این قطعه کد را از فصل ۲ "توابع" آورده‌ایم:
 
 ```js
-var awesomeFunction = function(coolThings) {
+var awesomeFunction = function (coolThings) {
     // ..
     return amazingStuff;
 };
 ```
 
-The function expression here is referred to as an *anonymous function expression*, since it has no name identifier between the `function` keyword and the `(..)` parameter list. This point confuses many JS developers because as of ES6, JS performs a "name inference" on an anonymous function:
+The function expression here is referred to as an _anonymous function expression_, since it has no name identifier between the `function` keyword and the `(..)` parameter list. This point confuses many JS developers because as of ES6, JS performs a "name inference" on an anonymous function:
 
 ```js
 awesomeFunction.name;
 // "awesomeFunction"
 ```
 
-The `name` property of a function will reveal either its directly given name (in the case of a declaration) or its inferred name in the case of an anonymous function expression. That value is generally used by developer tools when inspecting a function value or when reporting an error stack trace.
+ویژگی `name` یک تابع، یا اسم مستقیمی که به آن داده شده است را نمایان می‌کند (در صورت تعریف عادی/مستقیم) یا در صورتی که به شکل ناشناس تعریف شده باشد نام استنتاجی (ضمنی) آن را نمایان میکند.آن مقدار عموما توسط برنامه نویسان زمانی که یک تابع و یا خطایی در را پشته ردیابی بازرسی می‌کنند استفاده می‌شود.
 
-So even an anonymous function expression *might* get a name. However, name inference only happens in limited cases such as when the function expression is assigned (with `=`). If you pass a function expression as an argument to a function call, for example, no name inference occurs; the `name` property will be an empty string, and the developer console will usually report "(anonymous function)".
+بنابراین شاید حتی یک تابع ناشناس هم نامی بگیرد. گرچه این نام استنتاجی (ضمنی) در موارد محدودی تخصیص پیدا می‌کند مثل زمانی که تابع ضمنی توسط `=` اختصاص داده شود. اگر یک تابع ضمنی را به عنوان یک آرگومان به تابعی که فراخوانی می‌شود بدهید، اینگونه که هیچ نامی حتی به صورت استنتاجی هم تاثیر نداشته باشد; ویژگی `name` یک متن(استرینگ) خالی خواهد بود، و console معمولا "(anonymous function)" گزارش میکند.
 
-Even if a name is inferred, **it's still an anonymous function.** Why? Because the inferred name is a metadata string value, not an available identifier to refer to the function. An anonymous function doesn't have an identifier to use to refer to itself from inside itself—for recursion, event unbinding, etc.
+حتی اگر نام به صورت استنتاجی باشد ** بازم هم یک تابع ناشناس خواهد بود**. چرا؟ چون نام استنتاجی آن یک متن metadata خواهد بود. نه یک identifier فعال که به تابع ارجاع می‌شود.و تابع ناشناس نامی ندارد که با آن بتواند خودش را درون خویش فراخوانی کند.- برای کارهای بازگشتی و رویداد های unbinding و غیره.
 
-Compare the anonymous function expression form to:
+توابع بی‌نامرا با کد زیر مقایسه کنید:
 
 ```js
 // let awesomeFunction = ..
@@ -99,19 +101,21 @@ awesomeFunction.name;
 // "someName"
 ```
 
-This function expression is a *named function expression*, since the identifier `someName` is directly associated with the function expression at compile time; the association with the identifier `awesomeFunction` still doesn't happen until runtime at the time of that statement. Those two identifiers don't have to match; sometimes it makes sense to have them be different, other times it's better to have them be the same.
+این تابع ضمنی را _تابع ضمنی نام‌دار_ میخوانند،چراکه `someName` در زمان کامپایل به طور مستقیم با تابع ضمنی در ارتباط است. مشارکت نام `awesomeFunction` تا زمان جرای آن خط از کد اتفاق نخواهد افتاد. این دو نام مجبور نیستند که یکی باشند. گاهی أوقات منظقی است که دو نام مختلف داشته باشند و برخی أوقات بهتر است تا نام یکسان داشته باشند.
 
-Notice also that the explicit function name, the identifier `someName`, takes precedence when assigning a *name* for the `name` property.
+توجه کنید که برای تابع نام دهی مستقیم `someName` در هنگام تخصیص _نام_ به ویژگی `name` تقدم دارد.
 
-Should function expressions be named or anonymous? Opinions vary widely on this. Most developers tend to be unconcerned with using anonymous functions. They're shorter, and unquestionably more common in the broad sphere of JS code out there.
+آیا توابع ضمنی باید نام‌دار یا بی نام باشند؟ نظرات در این مسله متفاوت است. بیشتر برنامه نویسان اهمیتی نمی‌دهند که از توابع بی‌نام استفاده کنند. آنها کوتاه‌تر، و در حوزه گسترده‌ JS رایج تر هستند.
 
-In my opinion, if a function exists in your program, it has a purpose; otherwise, take it out! And if it has a purpose, it has a natural name that describes that purpose.
+به نظر من اگر تابعی در برنامه شما وجود دارد ، هدفی دارد که اگر نداشت حذفش می‌کردید. و اگر هدفی داشته باشد طبیعتا یک نام برای توصیف آن هدف باید داشته باشد.
 
-If a function has a name, you the code author should include that name in the code, so that the reader does not have to infer that name from reading and mentally executing that function's source code. Even a trivial function body like `x * 2` has to be read to infer a name like "double" or "multBy2"; that brief extra mental work is unnecessary when you could just take a second to name the function "double" or "multBy2" *once*, saving the reader that repeated mental work every time it's read in the future.
+آیا توابع ضمنی باید نام‌دار یا بی نام باشند؟ نظرات در این مسله متفاوت است. بیشتر برنامه نویسان اهمیتی نمی‌دهند که از توابع بی‌نام استفاده کنند. آنها کوتاه‌تر، و در حوزه گسترده‌ JS رایج تر هستند.
+به نظر من اگر تابعی در برنامه شما وجود دارد ، هدفی دارد که اگر نداشت حذفش می‌کردید. و اگر هدفی داشته باشد طبیعتا یک نام برای توصیف آن هدف باید داشته باشد.
+اگر تابعی نامی دارد، شما به عنوان کسی که کد را نوشته باید آن نام را در کد وارد کنید که برای فهمیدن نام آن تابع خواننده مجبور نباشد تابع را به‌طور ذهنی ایجاد کند. حتی تابع ناچیز `x * 2` بحتما باید خوانده شود تا نام "double" یا "multBy2"از آن استنتاج شود. این مقدار کوچک از کار ذهنی را هم میتوان با صرف یک ثانیه زمان و دادن نام"double" یا "multBy2"به تابع برای همیشه حذف کرد. تا کاربر را از شر فکر کردن برای هر بار خواندن کد در آینده نجات داد.
 
-There are, regrettably in some respects, many other function definition forms in JS as of early 2020 (maybe more in the future!).
+متاسفانه از اوایل سال ۲۰۲۰ فرم‌های مختلفی از تعریف تابع وجود دارد.( شاید در آینده بیشتر هم بشود!)
 
-Here are some more declaration forms:
+اینجا هم چند نمونه از أنواع تعریف تابع:
 
 ```js
 // generator function declaration
@@ -127,7 +131,7 @@ async function *four() { .. }
 export function five() { .. }
 ```
 
-And here are some more of the (many!) function expression forms:
+و این هم دسته‌ای از (تعداد زیاد) از أنواع توابع ضمنی:
 
 ```js
 // IIFE
@@ -154,11 +158,13 @@ someOperation( x => x * 2 );
 // ..
 ```
 
-Keep in mind that arrow function expressions are **syntactically anonymous**, meaning the syntax doesn't provide a way to provide a direct name identifier for the function. The function expression may get an inferred name, but only if it's one of the assignment forms, not in the (more common!) form of being passed as a function call argument (as in the last line of the snippet).
+به خاطر داشته باشید که تابع کمانی شکل ** به صورت نوشتاری بی‌نام ** هستند، به این معنی که نوشتار آنها اینگونه است که نمی‌توان به آنها نامی اختصاص داد. شاید توابع ضمنی نامی استنتاجی دریافت کنند، ولی زمانی که در یکی از حالت‌های اختصاص دهی باشند، نه در حالتی که (خیلی هم مرسوم است) که به عنوان یک آرگومان در فراخوانی تابعی قرار گرفتند.
 
-Since I don't think anonymous functions are a good idea to use frequently in your programs, I'm not a fan of using the `=>` arrow function form. This kind of function actually has a specific purpose (i.e., handling the `this` keyword lexically), but that doesn't mean we should use it for every function we write. Use the most appropriate tool for each job.
+از آنجایی که فکر نمی‌کنم استفاده زیاد از توابع بی نام در برنامه ایده خوبی باشد، پس علاقه چندانی به استفاده از فرم توابع کمانی `=>` ندارم.
+این نوع تابع در حقیقت فقط یک هدف دارد (که کلمه کلیدی `this` را lexically بکار برد)، و این به این معنی نیست که ما باید از آن در هر تابعی که می‌نویسیم استفاده کنیم. برای هر کاری از ابزار مناسب آن استفاده کنید.
 
-Functions can also be specified in class definitions and object literal definitions. They're typically referred to as "methods" when in these forms, though in JS this term doesn't have much observable difference over "function":
+همچنین توابع را میتوان در کلاس‌ها و تعاریف آبجکت‌ها هم تایین کرد. وقتی در این فرم قرار می‌گیرند به عنوان "methods" از آنها یاد می‌شود.
+اگر چه در JS این عبارت تفاوت چندان قابل مشاهده‌ای روی تابع ندارد:
 
 ```js
 class SomethingKindaGreat {
@@ -177,9 +183,9 @@ var EntirelyDifferent = {
 };
 ```
 
-Phew! That's a lot of different ways to define functions.
+ای بابا! چقدر راه مختلف برای تعریف تابع وجود داره.
 
-There's no simple shortcut path here; you just have to build familiarity with all the function forms so you can recognize them in existing code and use them appropriately in the code you write. Study them closely and practice!
+هیچ راه میانبری وجود ندارد; شما مجبور هستید با فرم های مختلف تعریف تابع آشنا شویدتا بتوانید آنها را تشخیص دهید و در جای مناسبه کد از آنها استفاده کنید. آنها را مطالعه و تمرین کنید.
 
 ## Coercive Conditional Comparison
 
@@ -257,8 +263,8 @@ In Chapter 3, we introduced prototypes and showed how we can link objects throug
 
 Another way of wiring up such prototype linkages served as the (honestly, ugly) predecessor to the elegance of the ES6 `class` system (see Chapter 2, "Classes"), and is referred to as prototypal classes.
 
-| TIP: |
-| :--- |
+| TIP:                                                                                                                                       |
+| :----------------------------------------------------------------------------------------------------------------------------------------- |
 | While this style of code is quite uncommon in JS these days, it's still perplexingly rather common to be asked about it in job interviews! |
 
 Let's first recall the `Object.create(..)` style of coding:
@@ -267,7 +273,7 @@ Let's first recall the `Object.create(..)` style of coding:
 var Classroom = {
     welcome() {
         console.log("Welcome, students!");
-    }
+    },
 };
 
 var mathClass = Object.create(Classroom);
@@ -295,7 +301,7 @@ mathClass.welcome();
 // Welcome, students!
 ```
 
-All functions by default reference an empty object at a property named `prototype`. Despite the confusing naming, this is **not** the function's *prototype* (where the function is prototype linked to), but rather the prototype object to *link to* when other objects are created by calling the function with `new`.
+All functions by default reference an empty object at a property named `prototype`. Despite the confusing naming, this is **not** the function's _prototype_ (where the function is prototype linked to), but rather the prototype object to _link to_ when other objects are created by calling the function with `new`.
 
 We add a `welcome` property on that empty object (called `Classroom.prototype`), pointing at the `hello()` function.
 
