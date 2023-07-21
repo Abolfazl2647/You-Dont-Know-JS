@@ -74,18 +74,18 @@ var awesomeFunction = function (coolThings) {
 };
 ```
 
-The function expression here is referred to as an _anonymous function expression_, since it has no name identifier between the `function` keyword and the `(..)` parameter list. This point confuses many JS developers because as of ES6, JS performs a "name inference" on an anonymous function:
+تابع اکسپریشن در اینجا به خاطر آنکه بین کلمه `function` و عبارت `(..)` نامی وجود ندارد تابع بی‌نامخطاب می‌شود. در نقطه بسیاری از توسعه‌دهنگان JS سردرگم می‌شوند چون از زمان ES6 جاوااسکریپت می‌تواند "name inference" (نام استنتاجی) را روی تابع بی‌نامانجام دهد:
 
 ```js
 awesomeFunction.name;
 // "awesomeFunction"
 ```
 
-ویژگی `name` یک تابع، یا اسم مستقیمی که به آن داده شده است را نمایان می‌کند (در صورت تعریف عادی/مستقیم) یا در صورتی که به شکل ناشناس تعریف شده باشد نام استنتاجی (ضمنی) آن را نمایان میکند.آن مقدار عموما توسط برنامه نویسان زمانی که یک تابع و یا خطایی در را پشته ردیابی بازرسی می‌کنند استفاده می‌شود.
+property `name` یک تابع، یا اسم مستقیمی که به آن داده شده است را نمایان می‌کند (در صورت تعریف عادی/مستقیم) یا در صورتی که به شکل بی‌نامتعریف شده باشد نام استنتاجی (ضمنی) آن را نمایان میکند.آن مقدار عموما توسط برنامه نویسان زمانی که یک تابع و یا خطایی در را پشته ردیابی بازرسی می‌کنند استفاده می‌شود.
 
-بنابراین شاید حتی یک تابع ناشناس هم نامی بگیرد. گرچه این نام استنتاجی (ضمنی) در موارد محدودی تخصیص پیدا می‌کند مثل زمانی که تابع ضمنی توسط `=` اختصاص داده شود. اگر یک تابع ضمنی را به عنوان یک آرگومان به تابعی که فراخوانی می‌شود بدهید، اینگونه که هیچ نامی حتی به صورت استنتاجی هم تاثیر نداشته باشد; ویژگی `name` یک متن(استرینگ) خالی خواهد بود، و console معمولا "(anonymous function)" گزارش میکند.
+بنابراین شاید حتی یک تابع بی‌نامهم نامی بگیرد. گرچه این نام استنتاجی (ضمنی) در موارد محدودی تخصیص پیدا می‌کند مثل زمانی که تابع ضمنی توسط `=` اختصاص داده شود. اگر یک تابع ضمنی را به عنوان یک آرگومان به تابعی که فراخوانی می‌شود بدهید، اینگونه که هیچ نامی حتی به صورت استنتاجی هم تاثیر نداشته باشد; property `name` یک متن(استرینگ) خالی خواهد بود، و console معمولا "(anonymous function)" گزارش میکند.
 
-حتی اگر نام به صورت استنتاجی باشد ** بازم هم یک تابع ناشناس خواهد بود**. چرا؟ چون نام استنتاجی آن یک متن metadata خواهد بود. نه یک identifier فعال که به تابع ارجاع می‌شود.و تابع ناشناس نامی ندارد که با آن بتواند خودش را درون خویش فراخوانی کند.- برای کارهای بازگشتی و رویداد های unbinding و غیره.
+حتی اگر نام به صورت استنتاجی باشد ** بازم هم یک تابع بی‌نامخواهد بود**. چرا؟ چون نام استنتاجی آن یک متن metadata خواهد بود. نه یک identifier فعال که به تابع ارجاع می‌شود.و تابع بی‌نامنامی ندارد که با آن بتواند خودش را درون خویش فراخوانی کند.- برای کارهای بازگشتی و رویداد های unbinding و غیره.
 
 توابع بی‌نامرا با کد زیر مقایسه کنید:
 
@@ -103,7 +103,7 @@ awesomeFunction.name;
 
 این تابع ضمنی را _تابع ضمنی نام‌دار_ میخوانند،چراکه `someName` در زمان کامپایل به طور مستقیم با تابع ضمنی در ارتباط است. مشارکت نام `awesomeFunction` تا زمان جرای آن خط از کد اتفاق نخواهد افتاد. این دو نام مجبور نیستند که یکی باشند. گاهی أوقات منظقی است که دو نام مختلف داشته باشند و برخی أوقات بهتر است تا نام یکسان داشته باشند.
 
-توجه کنید که برای تابع نام دهی مستقیم `someName` در هنگام تخصیص _نام_ به ویژگی `name` تقدم دارد.
+توجه کنید که برای تابع نام دهی مستقیم `someName` در هنگام تخصیص _نام_ به property `name` تقدم دارد.
 
 آیا توابع ضمنی باید نام‌دار یا بی نام باشند؟ نظرات در این مسله متفاوت است. بیشتر برنامه نویسان اهمیتی نمی‌دهند که از توابع بی‌نام استفاده کنند. آنها کوتاه‌تر، و در حوزه گسترده‌ JS رایج تر هستند.
 
@@ -111,7 +111,7 @@ awesomeFunction.name;
 
 آیا توابع ضمنی باید نام‌دار یا بی نام باشند؟ نظرات در این مسله متفاوت است. بیشتر برنامه نویسان اهمیتی نمی‌دهند که از توابع بی‌نام استفاده کنند. آنها کوتاه‌تر، و در حوزه گسترده‌ JS رایج تر هستند.
 به نظر من اگر تابعی در برنامه شما وجود دارد ، هدفی دارد که اگر نداشت حذفش می‌کردید. و اگر هدفی داشته باشد طبیعتا یک نام برای توصیف آن هدف باید داشته باشد.
-اگر تابعی نامی دارد، شما به عنوان کسی که کد را نوشته باید آن نام را در کد وارد کنید که برای فهمیدن نام آن تابع خواننده مجبور نباشد تابع را به‌طور ذهنی ایجاد کند. حتی تابع ناچیز `x * 2` بحتما باید خوانده شود تا نام "double" یا "multBy2"از آن استنتاج شود. این مقدار کوچک از کار ذهنی را هم میتوان با صرف یک ثانیه زمان و دادن نام"double" یا "multBy2"به تابع برای همیشه حذف کرد. تا کاربر را از شر فکر کردن برای هر بار خواندن کد در آینده نجات داد.
+اگر تابعی قرار است نامی داشته باشد، شما به عنوان کسی که کد را نوشته باید آن نام را در کد وارد کنید که برای فهمیدن نام آن تابع خواننده مجبور نباشد تابع را به‌طور ذهنی اجرا کند. حتی تابع ناچیز `x * 2` حتما باید خوانده شود تا نام "double" یا "multBy2"از آن استنتاج شود. این مقدار کوچک از کار ذهنی را هم میتوان با صرف یک ثانیه زمان و دادن نام"double" یا "multBy2"به تابع برای همیشه حذف کرد. تا کاربر را از شر فکر کردن برای هر بار خواندن کد در آینده نجات داد.
 
 متاسفانه از اوایل سال ۲۰۲۰ فرم‌های مختلفی از تعریف تابع وجود دارد.( شاید در آینده بیشتر هم بشود!)
 
@@ -187,13 +187,14 @@ var EntirelyDifferent = {
 
 هیچ راه میانبری وجود ندارد; شما مجبور هستید با فرم های مختلف تعریف تابع آشنا شویدتا بتوانید آنها را تشخیص دهید و در جای مناسبه کد از آنها استفاده کنید. آنها را مطالعه و تمرین کنید.
 
-## Coercive Conditional Comparison
+## مقایسه تبدیل واحد شرطی
 
-Yes, that section name is quite a mouthful. But what are we talking about? We're talking about conditional expressions needing to perform coercion-oriented comparisons to make their decisions.
+بله نام این قسمت دهن پر کنه. ولی در مورد چی صحبت می‌کنیم؟ در مورد این صحبت می‌کنیم که شرط‌های ضمنی برای گرفتن تصمیم به مقایسه تبدیل-محور نیاز دارند.
 
 `if` and `? :`-ternary statements, as well as the test clauses in `while` and `for` loops, all perform an implicit value comparison. But what sort? Is it "strict" or "coercive"? Both, actually.
+`if` و `? :`-جملات سه تایی، همچنین جزء های تستی در حلقه‌های `while` و `for` ، همگی به صورت غیر مستقیم قیاس مقداری می‌کنند. ولی چگونه ؟ این قیاس "بسته" یا "اجباری" است یا هر دو ؟ بلکه هر دو.
 
-Consider:
+درنظر بگیرید:
 
 ```js
 var x = 1;
@@ -208,7 +209,7 @@ while (x) {
 }
 ```
 
-You might think of these `(x)` conditional expressions like this:
+شاید به این `(x)` شرط ضمنی به شکل زیر فکر کنید:
 
 ```js
 var x = 1;
@@ -223,7 +224,8 @@ while (x == true) {
 }
 ```
 
-In this specific case -- the value of `x` being `1` -- that mental model works, but it's not accurate more broadly. Consider:
+در این مورد خاص – مقدار `x` شده `1` -- این مدل ذهنی کار میکنه، و در کل درست نیست.
+درنظر بگیرید:
 
 ```js
 var x = "hello";
@@ -237,7 +239,7 @@ if (x == true) {
 }
 ```
 
-Oops. So what is the `if` statement actually doing? This is the more accurate mental model:
+ای بابا. پس شرط `if` در واقع چه کار می‌کند؟ این مدل ذهنی بسیار دقیق تر است.
 
 ```js
 var x = "hello";
@@ -253,21 +255,24 @@ if (Boolean(x) === true) {
 }
 ```
 
-Since the `Boolean(..)` function always returns a value of type boolean, the `==` vs `===` in this snippet is irrelevant; they'll both do the same thing. But the important part is to see that before the comparison, a coercion occurs, from whatever type `x` currently is, to boolean.
+از آنجایی که تابع `Boolean(..)` همیشه مقداری از جنس boolean برمی‌گرداند، در اینجا `==` و `===`غیر ضروری است.
+هر دوی آنها یک‌کار را انجام می‌دهند. ولی مهم ترین قسمت آن است که قبل از مقایسه، یک تبدیل تایپ هر آنچه که `x` باشد به یک boolean اتفاق می‌افتد.
 
-You just can't get away from coercions in JS comparisons. Buckle down and learn them.
+شما نمی‌توانید از تبدیل تایپ‌ها در مقایسه‌های جاوااسکریپت فرار کنید.
 
 ## Prototypal "Classes"
 
-In Chapter 3, we introduced prototypes and showed how we can link objects through a prototype chain.
+در فصل ۳، prototype ها را معرفی کردیم و نشان دادیم چگونه می‌توان آبجکت‌ها را در زنجیره prototype به هم متصل کرد.
 
 Another way of wiring up such prototype linkages served as the (honestly, ugly) predecessor to the elegance of the ES6 `class` system (see Chapter 2, "Classes"), and is referred to as prototypal classes.
+نوع دیگری که میتوان اتصال این prototype ها را برقرار می‌کند (که انصافاً زشته) طی مراحلی ظریف از سیستم `class` ها در ES6 است که به آن کلاس‌‌های prototypal می‌گویند.
 
-| TIP:                                                                                                                                       |
-| :----------------------------------------------------------------------------------------------------------------------------------------- |
-| While this style of code is quite uncommon in JS these days, it's still perplexingly rather common to be asked about it in job interviews! |
+| نکته: |
+| :---- |
 
-Let's first recall the `Object.create(..)` style of coding:
+در زمانی که این سبک از کد زدن در جاوااسکریپت خیلی مرسوم نیست، به نوع غیرقابل درکی در جلسات استخدامی از آنها سوال می‌شود!
+
+بیاید برگردیم به سبک `Object.create(..)`:
 
 ```js
 var Classroom = {
@@ -282,9 +287,9 @@ mathClass.welcome();
 // Welcome, students!
 ```
 
-Here, a `mathClass` object is linked via its prototype to a `Classroom` object. Through this linkage, the function call `mathClass.welcome()` is delegated to the method defined on `Classroom`.
+در اینحا، آبجکت `mathClass` توسط prototype خودش به آبجکت `Classroom` وصل شده است. در میان این اتصال فراخوانیه تابع `mathClass.welcome()` به مِتدی که در `Classroom` تعریف شده دلالت می‌کند.
 
-The prototypal class pattern would have labeled this delegation behavior "inheritance," and alternatively have defined it (with the same behavior) as:
+الگوی کلاس‌هایprototype ای این رفتار واگذاری را "ارث‌بری," نام گذاری می‌کنند. و به همین منوال آن را اینگونه تعریف می‌کنند(با همان رفتار):
 
 ```js
 function Classroom() {
@@ -301,15 +306,13 @@ mathClass.welcome();
 // Welcome, students!
 ```
 
-All functions by default reference an empty object at a property named `prototype`. Despite the confusing naming, this is **not** the function's _prototype_ (where the function is prototype linked to), but rather the prototype object to _link to_ when other objects are created by calling the function with `new`.
+تمام تابع‌ها به‌طور پیش‌فرض به یک آبجکتی خالی در property‌ای به اسم `prototype` رفرنس می‌دهند. جدا از اسم گمراه‌کننده‌اش، این _prototype_ یک تابع _نیست_ (جایی که نمونه‌اولیه تابع به آن متصل است)، ولی در واقع جایی است که نمونه اولیه آبجکت _به آن متصل است_ درحالی که باقی آبجکت‌ها توسط کلمه کلیدی `new` فراخوانی می‌شوند.
 
-We add a `welcome` property on that empty object (called `Classroom.prototype`), pointing at the `hello()` function.
+ما property `welcome` را به آن آبجکت خالی اضافه می‌کنیم که به تابع `hello()` اشاره کند. (میخوانیم `Classroom.prototype` )،
 
-Then `new Classroom()` creates a new object (assigned to `mathClass`), and prototype links it to the existing `Classroom.prototype` object.
+بنابراین `mathClass` تابع/ property `welcome()` ندارد، بلکه با موفقیت به تابع `Classroom.prototype.welcome()` دلالت می‌کند.
 
-Though `mathClass` does not have a `welcome()` property/function, it successfully delegates to the function `Classroom.prototype.welcome()`.
-
-This "prototypal class" pattern is now strongly discouraged, in favor of using ES6's `class` mechanism:
+این الگوی "کلاس‌های protptypeای" به نفع استفاده از کلاس‌های ES6 أصلا توسیه نمی‌شود.
 
 ```js
 class Classroom {
@@ -328,4 +331,4 @@ mathClass.welcome();
 // Welcome, students!
 ```
 
-Under the covers, the same prototype linkage is wired up, but this `class` syntax fits the class-oriented design pattern much more cleanly than "prototypal classes".
+به صورت پنهانی، همان نحوه اتصال prototypeای برقرار می‌شود، ولی سبک نوشتاری `class` بیشتر به الگوی شی‌گرایی کلاسی می‌خورد تابه” کلاس های pototype ای”.
