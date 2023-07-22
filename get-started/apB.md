@@ -1,8 +1,6 @@
 # You Don't Know JS Yet: Get Started - 2nd Edition
 
-# Appendix B: Practice, Practice, Practice!
-
-ضمیمه B : تمرین تمرین تمرین
+#ضمیمه B : تمرین تمرین تمرین
 
 در این ضمیمه، چند تمرین بع علاوه جواب های پیشنهادی آنها را مرور میکنیم. این تمرین‌ها _شما را در مسیر یادگیری_ مفاهیمی که در این کتاب گفته شده قرار می‌دهد.
 
@@ -122,19 +120,19 @@ slotMachine.display();
 
 کمک:
 
--   Use the `%` modulo operator for wrapping `position` as you access symbols circularly around a reel.
+هنگام دسترسی نمادها به صورت دایره ای در اطراف یک قرقره، از عملگر مدول `%` برای پیچیدن «موقعیت» استفاده کنید.
 
--   Use `Object.create(..)` to create an object and prototype-link it to another object. Once linked, delegation allows the objects to share `this` context during method invocation.
+از `Object.create(..)` برای ایجاد یک آبجکت استفاده کنید یک اتصال prototypeای به یک آبجکت دیگر بدهید. هنگامی که اتصال پیدا کرد، delegation به ابجکت‌ها اجازه میدهد تا عبارت `this` را هنگام فراحوانی به اشتراک بگذارند.
 
--   Instead of modifying the reel object directly to show each of the three positions, you can use another temporary object (`Object.create(..)` again) with its own `position`, to delegate from.
+به جای آنکه آبجکت حلقه (reel) را مستقیم تغییر دهید تا هر سه موقعیت را نمایش دهید، می‌توانید از یک آبجکت موقت (`Object.create(..)` مجدد) که `position`, خودش را دارد استفاده کنید تا از آن تفویض بگیرید.
 
-Once you have code that works, _compare_ your solution(s) to the code in "Suggested Solutions" at the end of this appendix.
+هنگامی که به کدی که کار می‌کند دست‌یافتید راه حل خودتان را با راه حل قسمت "راه حل های پیش‌نهادی" در آخر این ضمیمه _مقایسه_ کنید.
 
-## Suggested Solutions
+## راه حل های پیش‌نهادی
 
-Keep in mind that these suggested solutions are just that: suggestions. There are many different ways to solve these practice exercises. Compare your approach to what you see here, and consider the pros and cons of each.
+در ذهنتان باشد که راه حل های پیشنهادی صرفا پیشنهادی هستند. و برای حل این تمرین ها راه های مختلفی وجود دارد. راه حل خودتان را با این راه حل ها مقایسه کنید و نکات مثبت و منفی آن را در نظر بگیرید.
 
-Suggested solution for "Comparisons" (Pillar 3) practice:
+راه حل پیشنهادی برای تمرین "Comparisons" (ستون ۳)
 
 ```js
 const dayStart = "07:30";
@@ -296,4 +294,4 @@ slotMachine.display();
 // ☺ | ♦ | ★
 ```
 
-That's it for this book. But now it's time to look for real projects to practice these ideas on. Just keep coding, because that's the best way to learn!
+این هم از این کتاب. ولی حالا موقع تمرین در پروژه‌های واقعی است تا این ایده‌ها را روی آن پیاده کنید. به کد زدن ادامه دهید چون بهترین راه برای یادگیری است.
